@@ -2,7 +2,7 @@
 
 if [[ $# -lt 2 ]]; then
     cat << EOF
-Usage: $(basename $0) PORTNUMBER SCANDIR
+Usage: $(basename $0) SCANDIR PORTNUMBER
 
 Common ports:
     21   - FTP
