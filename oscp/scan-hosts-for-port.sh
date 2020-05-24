@@ -25,13 +25,14 @@ Common ports:
     3389 - RDP
     8080 - Various (e.g. Tomcat)
 EOF
+    exit 1
 fi
 
-scandir=$1
+scandir="$1"
 port=$2
 
 if [[ ! -d "$scandir" ]]; then
-    echo "SCANDIR does not exist. Exiting..."
+    echo "SCANDIR $scandir does not exist. Exiting..."
     exit
 fi
 
