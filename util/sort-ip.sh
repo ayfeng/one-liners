@@ -1,5 +1,4 @@
-if [[ $# -lt 1 ]]; then
-    echo "Usage: $(basename $0) FILE"
-fi
+#!/bin/bash
+[ $# -ge 1 -a -f "$1" ] && input="$1" || input="-"
 
-sort -t . -k 3,3n -k 4,4n $1
+sort -t . -k 3,3n -k 4,4n
