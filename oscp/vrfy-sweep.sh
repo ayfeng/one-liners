@@ -7,4 +7,4 @@ fi
 subnet=$1
 prefix=$(sed 's/.[0-9]*$//' <<< $subnet)
 
-for x in $(seq 1 255); do res=$(echo 'VRFY root' | nc -nv -q1 -w2 $prefix.$x 25 2>/dev/null) && if [[ ! -z "$res" ]]; then echo "$prefix.$x responded to VRFY with: $res"; fi; done
+for x in $(seq 1 255); do ((res=$(echo 'VRFY root' | nc -C -q2 -w2 $prefix.$x 25 2>/dev/null | grep 252) && wait && if [[ ! -z "$res" ]]; then echo -e "\n$prefix.$x responded to VRFY with: $res"; fi) &); done
